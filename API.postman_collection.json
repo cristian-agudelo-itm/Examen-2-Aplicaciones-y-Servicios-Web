@@ -1,0 +1,197 @@
+{
+	"info": {
+		"_postman_id": "5a004e69-ed9b-431e-a383-c4c3ccb62578",
+		"name": "API",
+		"description": "# 📌 Examen 2 - Aplicación de Servicio Web (REST API)\n\n## 📌 Descripción:\n\nEste proyecto es una API REST desarrollada en C# con ASP.NET Web API (.NET Framework), que permite el **registro y control de camiones y pesajes**. La API fue diseñada como parte del Examen Parcial 2 de la asignatura, cumpliendo con los requerimientos especificados.\n\n## 📌 Funcionalidades:\n\n✅ Consultar todos los camiones  \n✅ Consultar camión por placa  \n✅ Registrar un nuevo camión  \n✅ Eliminar un camión  \n✅ Registrar pesajes de camiones, incluyendo carga de imagen  \n✅ Validación de peso máximo permitido por número de ejes  \n✅ Almacenamiento de imágenes en base de datos como `byte[]`  \n✅ Visualización de datos mediante pruebas en Postman con variables y métodos organizados\n\n## 📌 Tecnologías utilizadas:\n\n🔹 Lenguaje: C#  \n🔹 Framework: ASP.NET Web API (.NET Framework)  \n🔹 Base de Datos: SQL Server  \n🔹 ORM: Entity Framework  \n🔹 Herramientas de Prueba: Postman\n\n## 📌 Requisitos para ejecutar el proyecto:\n\n🔹 Visual Studio 2022  \n🔹 SQL Server (con la base de datos y tablas configuradas según `Examen_2_Jueves.sql`)  \n🔹 Postman (importar colección `API.postman_collection.json`)  \n🔹 Actualizar cadena de conexión en `Web.config` si se ejecuta desde otro equipo\n\n## 🧪 Datos de prueba:\n\n🔸 El proyecto incluye scripts para insertar registros de prueba en las tablas `Camion`, `Pesaje` y `FotoPesaje`.  \n🔸 Las imágenes se almacenan directamente en la base de datos (campo `Imagen` como `varbinary(max)`).  \n🔸 Se pueden subir imágenes desde Postman usando `form-data`.\n\n## 📂 Estructura del Proyecto:\n\n- `Models/` → Entidades como `Camion.cs`, `Pesaje.cs`, `FotoPesaje.cs`\n    \n- `Controllers/` → Controladores `CamionesController.cs`, `PesajesController.cs`\n    \n- `Services/` → Lógica de negocio en `CamionService.cs`, `PesajeService.cs`\n    \n- `API.postman_collection.json` → Colección de Postman con todos los métodos organizados y configurados\n    \n\n## 🔎 Validaciones:\n\n✔️ Comprobación de si el camión ya está registrado (placa única)  \n✔️ Validación del peso máximo por número de ejes  \n✔️ Validación del tipo de archivo subido (imagen)  \n✔️ Todos los métodos incluyen status y respuesta verificables en Postman\n\n## 👤 Autores:\n\n👤 Cristian Andres Agudelo Henao y Jeronimo Patiño Betancur 📅 Fecha: 4 de Abril de 2025\n\nEndFragment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "39039002"
+	},
+	"item": [
+		{
+			"name": "Agregar Camiones",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"placa\":\"1234\",\r\n    \"Marca\":\"Toyota\",\r\n    \"NumeroEjes\":5\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/api/Camiones/Agregar",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"Camiones",
+						"Agregar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consultar Camiones",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/Camiones",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"Camiones"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consultar Camion por placa",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/api/Camiones/1234",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"Camiones",
+						"1234"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar Camion",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/Camiones/1234",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"Camiones",
+						"1234"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Agregar Peaje",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "Imagen",
+							"type": "file",
+							"src": "postman-cloud:///1f0118ff-33f8-4ff0-b046-71fe7379dfeb"
+						},
+						{
+							"key": "Placa",
+							"value": "1234",
+							"type": "text"
+						},
+						{
+							"key": "NumeroEjes",
+							"value": "5",
+							"type": "text"
+						},
+						{
+							"key": "Marca",
+							"value": "Toyota",
+							"type": "text"
+						},
+						{
+							"key": "Peso",
+							"value": "12",
+							"type": "text"
+						},
+						{
+							"key": "Estacion",
+							"value": "medellin",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{base_url}}/api/Pesajes/Agregar",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"Pesajes",
+						"Agregar"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:49969/",
+			"type": "string"
+		}
+	]
+}
