@@ -2,7 +2,7 @@
 
 ## 📌 Descripción:
 
-Este proyecto es una API REST desarrollada en C# con ASP.NET Web API (.NET Framework), que permite el **registro y control de camiones y pesajes**. La API fue diseñada como parte del Examen Parcial 2 de la asignatura, cumpliendo con los requerimientos especificados en el archivo oficial del examen.
+Este proyecto es una API REST desarrollada en C# con ASP.NET Web API (.NET Framework), que permite el **registro y control de camiones y pesajes**. La API fue diseñada como parte del Examen Parcial 2 de la asignatura, cumpliendo con los requerimientos especificados.
 
 ## 📌 Funcionalidades:
 
@@ -41,7 +41,6 @@ Este proyecto es una API REST desarrollada en C# con ASP.NET Web API (.NET Frame
 - `Models/` → Entidades como `Camion.cs`, `Pesaje.cs`, `FotoPesaje.cs`
 - `Controllers/` → Controladores `CamionesController.cs`, `PesajesController.cs`
 - `Services/` → Lógica de negocio en `CamionService.cs`, `PesajeService.cs`
-- `Web.config` → Configuración de la conexión a la base de datos
 - `API.postman_collection.json` → Colección de Postman con todos los métodos organizados y configurados
 
 ## 🔎 Validaciones:
@@ -51,16 +50,8 @@ Este proyecto es una API REST desarrollada en C# con ASP.NET Web API (.NET Frame
 ✔️ Validación del tipo de archivo subido (imagen)  
 ✔️ Todos los métodos incluyen status y respuesta verificables en Postman  
 
-## 📹 Instrucciones para la presentación en video:
-
-1. Mostrar entorno de desarrollo (Visual Studio)
-2. Explicar brevemente el modelo y estructura
-3. Ejecutar el servidor local
-4. Probar cada método desde Postman (usando variables y entorno creado)
-5. Mostrar pruebas exitosas: creación, consulta, validación y carga de imagen
-6. Finalizar mostrando resultados en la base de datos
 
 ## 👤 Autores:
 
-👤 [Tu Nombre Aquí]  
-📅 Fecha: Abril 2025
+👤 Cristian Andres Agudelo Henao y Jeronimo Patiño Betancur
+📅 Fecha: 4 de Abril de 2025
